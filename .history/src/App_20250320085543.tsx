@@ -60,48 +60,42 @@ function CurrencyConverter() {
   return (
     <div className="flex flex-col bg-white justify-center p-8 items-center lg:p-16 md:p-12 min-h-screen">
     <div className="flex flex-col justify-center w-full items-center max-w-[2000px] md:px-8 px-4">
-      
-
     <div className="bg-white p-4 rounded-xl w-full max-w-3xl md:p-8 sm:p-6">
   <h2 className="flex justify-center text-center text-gray-800 text-xl font-semibold font-serif gap-2 items-center lg:mb-8 lg:text-5xl mb-4 md:mb-6 md:text-4xl sm:mb-5 sm:text-2xl">
     <CurrencyDollarIcon className="h-5 text-yellow-500 w-5 lg:h-12 lg:w-12 md:h-10 md:w-10 sm:h-6 sm:w-6" />
     Currency Converter
   </h2>
 
-  <div className="w-full mb-4 md:mb-6">
+  {/* Amount Input */}
+  <div className="w-full mb-4 md:mb-6 sm:mb-5">
     <label className="text-gray-600 text-sm block font-medium sm:text-base">Enter Amount</label>
     <div className="relative">
       <input
         type="number"
         value={amount}
         onChange={(e) => dispatch(setAmount(e.target.value))}
-        className="border border-gray-300 rounded-xl shadow-sm text-sm w-full duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:text-lg pl-8 pr-4 py-2 sm:pl-10 sm:py-3 sm:text-base transition-all"
+        className="border border-gray-300 rounded-xl shadow-sm text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:text-lg mt-1 pl-10 pr-4 py-2 sm:py-3 sm:text-base transition-all"
         placeholder="Enter amount"
       />
       <CurrencyDollarIcon className="h-5 text-gray-500 w-5 -translate-y-1/2 absolute left-3 sm:h-6 sm:w-6 top-1/2" />
     </div>
   </div>
 
-  <div className="flex flex-col gap-4 md:flex-row md:mb-6">
+  {/* Currency Select Fields */}
+  <div className="flex flex-col gap-4 mb-4 md:flex-row md:mb-6">
     {/* From Currency */}
     <div className="w-full md:w-1/2">
       <label className="text-gray-600 text-sm block font-medium sm:text-base">From</label>
-      <div className="flex items-center relative">
-        <img src={getFlagUrl(fromCurrency)} alt={fromCurrency} className="border border-gray-300 h-4 rounded-full w-4 absolute left-3 md:h-6 md:w-6 sm:h-5 sm:w-5" />
+      <div className="relative">
+        <img src={getFlagUrl(fromCurrency)} alt={fromCurrency} className="border border-gray-300 h-5 rounded-full w-5 absolute left-3 sm:h-6 sm:w-6" />
         <select
           value={fromCurrency}
           onChange={(e) => dispatch(setFromCurrency(e.target.value))}
-          className="bg-white border border-gray-300 rounded-xl shadow-sm text-sm w-full appearance-none duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:pr-10 md:text-lg pl-8 pr-6 py-2 sm:pl-10 sm:pr-8 sm:py-3 sm:text-base transition-all"
+          className="bg-white border border-gray-300 rounded-xl shadow-sm text-sm w-full appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:py-3 md:text-lg mt-1 pl-10 pr-8 py-2 sm:pr-10 sm:text-base transition-all"
         >
-          {isLoading ? (
-            <option>Loading...</option>
-          ) : (
-            currencies?.map(({ code, name }: Currency) => (
-              <option key={code} value={code}>
-                {code} - {name}
-              </option>
-            ))
-          )}
+          {isLoading ? <option>Loading...</option> : currencies?.map(({ code, name }: Currency) => (
+            <option key={code} value={code}>{code} - {name}</option>
+          ))}
         </select>
         <ChevronDownIcon className="h-4 text-gray-600 w-4 absolute pointer-events-none right-3 sm:h-5 sm:w-5" />
       </div>
@@ -110,36 +104,32 @@ function CurrencyConverter() {
     {/* To Currency */}
     <div className="w-full md:w-1/2">
       <label className="text-gray-600 text-sm block font-medium sm:text-base">To</label>
-      <div className="flex items-center relative">
-        <img src={getFlagUrl(toCurrency)} alt={toCurrency} className="border border-gray-300 h-4 rounded-full w-4 absolute left-3 md:h-6 md:w-6 sm:h-5 sm:w-5" />
+      <div className="relative">
+        <img src={getFlagUrl(toCurrency)} alt={toCurrency} className="border border-gray-300 h-5 rounded-full w-5 absolute left-3 sm:h-6 sm:w-6" />
         <select
           value={toCurrency}
           onChange={(e) => dispatch(setToCurrency(e.target.value))}
-          className="bg-white border border-gray-300 rounded-xl shadow-sm text-sm w-full appearance-none duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:pr-10 md:text-lg pl-8 pr-6 py-2 sm:pl-10 sm:pr-8 sm:py-3 sm:text-base transition-all"
+          className="bg-white border border-gray-300 rounded-xl shadow-sm text-sm w-full appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 md:pl-12 md:py-3 md:text-lg mt-1 pl-10 pr-8 py-2 sm:pr-10 sm:text-base transition-all"
         >
-          {isLoading ? (
-            <option>Loading...</option>
-          ) : (
-            currencies?.map(({ code, name }: Currency) => (
-              <option key={code} value={code}>
-                {code} - {name}
-              </option>
-            ))
-          )}
+          {isLoading ? <option>Loading...</option> : currencies?.map(({ code, name }: Currency) => (
+            <option key={code} value={code}>{code} - {name}</option>
+          ))}
         </select>
         <ChevronDownIcon className="h-4 text-gray-600 w-4 absolute pointer-events-none right-3 sm:h-5 sm:w-5" />
       </div>
     </div>
   </div>
 
+  {/* Convert Button */}
   <button
     onClick={handleConvert}
-    className="flex bg-blue-600 justify-center rounded-lg text-sm text-white w-full duration-300 font-semibold gap-2 hover:bg-blue-700 items-center md:text-lg mt-4 py-2 sm:py-3 sm:text-base transition"
+    className="flex bg-blue-600 justify-center rounded-lg text-sm text-white w-full duration-300 font-semibold gap-2 hover:bg-blue-700 items-center md:text-lg py-2 sm:py-3 sm:text-base transition"
   >
     <ArrowsRightLeftIcon className="h-5 w-5 sm:h-6 sm:w-6" />
     Convert
   </button>
 
+  {/* Conversion Result */}
   {convertedAmount && (
     <div className="text-center md:mt-6 mt-4 sm:mt-5">
       <p className="text-base text-gray-800 md:text-xl sm:text-lg">
@@ -149,30 +139,26 @@ function CurrencyConverter() {
   )}
 </div>
 
-      
+
+
+
     </div>
   
     {/* Chart Section */}
     <div className="w-full max-w-7xl md:mt-8 md:px-8 mt-6 px-4">
-  <h2 className="flex justify-center text-2xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6 md:text-4xl sm:text-3xl">
-    Exchange Rate Trends
-  </h2>
-  <div className="h-[250px] w-full lg:h-[400px] md:h-[350px] sm:h-[300px]">
-    <ResponsiveContainer width="100%" height="100%">
-      <AreaChart
-        data={chartData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="currency" />
-        <YAxis />
-        <Tooltip />
-        <Area type="monotone" dataKey="rate" stroke="#8884d8" fill="#8884d8" />
-      </AreaChart>
-    </ResponsiveContainer>
-  </div>
-</div>
-
+      <h2 className="flex justify-center text-3xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6 md:text-4xl">
+        Exchange Rate Trends
+      </h2>
+      <ResponsiveContainer width="100%" height={250}>
+        <AreaChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="currency" />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="rate" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   </div>
   );
 }

@@ -154,25 +154,19 @@ function CurrencyConverter() {
   
     {/* Chart Section */}
     <div className="w-full max-w-7xl md:mt-8 md:px-8 mt-6 px-4">
-  <h2 className="flex justify-center text-2xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6 md:text-4xl sm:text-3xl">
-    Exchange Rate Trends
-  </h2>
-  <div className="h-[250px] w-full lg:h-[400px] md:h-[350px] sm:h-[300px]">
-    <ResponsiveContainer width="100%" height="100%">
-      <AreaChart
-        data={chartData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="currency" />
-        <YAxis />
-        <Tooltip />
-        <Area type="monotone" dataKey="rate" stroke="#8884d8" fill="#8884d8" />
-      </AreaChart>
-    </ResponsiveContainer>
-  </div>
-</div>
-
+      <h2 className="flex justify-center text-3xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6 md:text-4xl">
+        Exchange Rate Trends
+      </h2>
+      <ResponsiveContainer width="100%" height={250}>
+        <AreaChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="currency" />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="rate" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   </div>
   );
 }

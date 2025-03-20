@@ -153,11 +153,11 @@ function CurrencyConverter() {
     </div>
   
     {/* Chart Section */}
-    <div className="w-full max-w-7xl md:mt-8 md:px-8 mt-6 px-4">
-  <h2 className="flex justify-center text-2xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6 md:text-4xl sm:text-3xl">
+    <div className="w-full max-w-7xl mt-6 px-4 md:mt-8 md:px-8">
+  <h2 className="flex justify-center text-2xl sm:text-3xl md:text-4xl text-center text-gray-800 font-semibold font-serif gap-2 items-center mb-4 md:mb-6">
     Exchange Rate Trends
   </h2>
-  <div className="h-[250px] w-full lg:h-[400px] md:h-[350px] sm:h-[300px]">
+  <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart
         data={chartData}
